@@ -3,18 +3,68 @@
 	"name": "StormC",
 	"patterns": [
 		{
+			"include": "#comments"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
+			"include": "#types"
+		},
+		{
+			"include": "#directives"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
 			"include": "#strings"
+		},
+		{
+			"include": "#internal_functions"
 		}
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.stormc",
+					"match": "//.*$"
+				},
+				{
+					"name": "comment.block.stormc",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
+		},
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.stormc",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b(if|while|for|return|switch|break|extern|native)\\b"
 			}]
+		},
+		"types": {
+			"patterns": [{
+				"name": "storage.type.stormc",
+				"match": "\\b(void|int|float|string|object|ref|aref)\\b"
+			}]
+		},
+		"directives": {
+			"patterns": [
+				{
+					"name": "keyword.other.stormc",
+					"match": "^#(include|define|event_handler|script_libriary)"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.stormc",
+					"match": "-?\\b\\d+(\\.\\d+)?\\b"
+				}
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.stormc",
@@ -24,6 +74,14 @@
 				{
 					"name": "constant.character.escape.stormc",
 					"match": "\\\\."
+				}
+			]
+		},
+		"internal_functions": {
+			"patterns": [
+				{
+					"name": "support.function.stormc",
+					"match": "(?i)\\b(Rand|frnd|CreateClass|CreateEntity|DeleteClass|SetEventHandler|ExitProgram|GetEventData|Stop|SendMessage|LoadSegment|UnloadSegment|Trace|MakeInt|MakeFloat|LayerDeleteContent|LayerSetRealize|LayerSetExecute|LayerSetMessages|LayerAddObject|LayerDelObject|LayerFreeze|abs|sqrt|sqr|sin|cos|tan|atan|atan2|asin|acos|DeleteAttribute|SegmentIsLoaded|GetAttributesNum|GetAttributeN|GetAttributeName|DelEventHandler|EntityUpdate|IsEntity|DumpAttributes|sti|stf|CheckAttribute|argb|DeleteEntities|ClearEvents|SaveEngineState|LoadEngineState|Event|PostEvent|fts|ClearPostEvents|SetArraySize|GetAttributeValue|Vartype|Breakpoint|Pow|CopyAttributes|strcut|findSubStr|ClearRef|strlen|GetDeltaTime|EventsBreak|shl|shr|and|or|DeleteEntitiesByType|CreateControl|DeleteControl|MapControl|SetControlFlags|ClearEntityAP|GetArraySize|GetTargetPlatform|GetEntity|FindEntity|FindEntityNext|GetSymbol|IsDigit|SaveVariable|LoadVariable|SetControlTreshold|LockControl|TestRef|SetTimeScale|CheckFunction|GetEngineVersion|sort)\\b"
 				}
 			]
 		}
