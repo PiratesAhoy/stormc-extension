@@ -1,0 +1,25 @@
+{
+  "name": "stormc",
+  "displayName": "StormC",
+  "description": "Storm Engine scripting language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "stormc",
+      "aliases": ["StormC", "stormc"],
+      "extensions": [".c",".h"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "stormc",
+      "scopeName": "source.stormc",
+      "path": "./syntaxes/stormc.tmLanguage.json"
+    }]
+  }
+}
