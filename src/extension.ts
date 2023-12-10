@@ -1,0 +1,113 @@
+// The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+import * as vscode from 'vscode';
+
+// this method is called when your extension is activated
+// your extension is activated the very first time the command is executed
+
+const builtinFunctionNames = [
+    "Rand",
+    "frnd",
+    "CreateClass",
+    "CreateEntity",
+    "DeleteClass",
+    "SetEventHandler",
+    "ExitProgram",
+    "GetEventData",
+    "Stop",
+    "SendMessage",
+    "LoadSegment",
+    "UnloadSegment",
+    "Trace",
+    "MakeInt",
+    "MakeFloat",
+    "LayerDeleteContent",
+    "LayerSetRealize",
+    "LayerSetExecute",
+    "LayerSetMessages",
+    "LayerAddObject",
+    "LayerDelObject",
+    "LayerFreeze",
+    "abs",
+    "sqrt",
+    "sqr",
+    "sin",
+    "cos",
+    "tan",
+    "atan",
+    "atan2",
+    "asin",
+    "acos",
+    "DeleteAttribute",
+    "SegmentIsLoaded",
+    "GetAttributesNum",
+    "GetAttributeN",
+    "GetAttributeName",
+    "DelEventHandler",
+    "EntityUpdate",
+    "IsEntity",
+    "DumpAttributes",
+    "sti",
+    "stf",
+    "CheckAttribute",
+    "argb",
+    "DeleteEntities",
+    "ClearEvents",
+    "SaveEngineState",
+    "LoadEngineState",
+    "Event",
+    "PostEvent",
+    "fts",
+    "ClearPostEvents",
+    "SetArraySize",
+    "GetAttributeValue",
+    "Vartype",
+    "Breakpoint",
+    "Pow",
+    "CopyAttributes",
+    "strcut",
+    "findSubStr",
+    "ClearRef",
+    "strlen",
+    "GetDeltaTime",
+    "EventsBreak",
+    "shl",
+    "shr",
+    "and",
+    "or",
+    "DeleteEntitiesByType",
+    "CreateControl",
+    "DeleteControl",
+    "MapControl",
+    "SetControlFlags",
+    "ClearEntityAP",
+    "GetArraySize",
+    "GetTargetPlatform",
+    "GetEntity",
+    "FindEntity",
+    "FindEntityNext",
+    "GetSymbol",
+    "IsDigit",
+    "SaveVariable",
+    "LoadVariable",
+    "SetControlTreshold",
+    "LockControl",
+    "TestRef",
+    "SetTimeScale",
+    "CheckFunction",
+    "GetEngineVersion",
+    "sort",
+]
+
+export function activate(context: vscode.ExtensionContext): void {
+    const completionProvider = vscode.languages.registerCompletionItemProvider('stormc', {
+        provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+            return [
+				...builtinFunctionNames.map(fn => {
+                    return new vscode.CompletionItem(fn, vscode.CompletionItemKind.Method)
+                }),
+            ];
+        }
+    })
+    context.subscriptions.push(completionProvider);
+}
