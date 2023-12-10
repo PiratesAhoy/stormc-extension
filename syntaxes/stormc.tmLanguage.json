@@ -41,7 +41,7 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.stormc",
-				"match": "\\b(if|while|for|return|switch|break|extern|native)\\b"
+				"match": "\\b(if|else|while|for|return|switch|case|break|extern|native)\\b"
 			}]
 		},
 		"types": {
@@ -69,13 +69,7 @@
 		"strings": {
 			"name": "string.quoted.double.stormc",
 			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.stormc",
-					"match": "\\\\."
-				}
-			]
+			"end": "\""
 		},
 		"internal_functions": {
 			"patterns": [
