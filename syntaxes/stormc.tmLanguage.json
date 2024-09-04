@@ -47,7 +47,7 @@
 		"types": {
 			"patterns": [{
 				"name": "storage.type.stormc",
-				"match": "\\b(void|int|float|string|object|ref|aref)\\b"
+				"match": "\\b(void|bool|int|float|string|object|ref|aref)\\b"
 			}]
 		},
 		"directives": {
